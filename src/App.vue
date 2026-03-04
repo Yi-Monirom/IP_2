@@ -21,7 +21,12 @@ import AddTodo from "./components/AddTodo.vue";
 import TodoLists from "./components/TodoList.vue";
 
 import { useTodoStore } from "./stores/todo";
+
+
+
+
 export default {
+
   name: "App",
   setup() {
     const store = useTodoStore();
@@ -47,6 +52,7 @@ export default {
       this.store.clearAll();
     },
   },
+ 
 };
 </script>
 <style>
