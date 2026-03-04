@@ -1,7 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Task } from 'src/Tasks/task.entity';
+import { Repository } from 'typeorm/repository/Repository';
 
 @Injectable()
 export class TaskService {
+  constructor(
+    @InjectRepository(Task)
+    private tasksRepo: Repository<Task>,
+  ) {}
+  findAll() {
+    return this.tasksRepo.find({
+      relations: ['user'],
+    });
+  }
+  findOne(id: number) {
+    return  this.tasksRepo.findOne({ where: { id } });
+  }
   getTask(id: string) {
     console.log(id);
     return {

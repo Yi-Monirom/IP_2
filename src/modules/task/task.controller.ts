@@ -13,6 +13,12 @@ import { TaskService } from './task.service';
 export class TasksController {
   constructor(private readonly taskService: TaskService) {}
 
+
+  @Get('/')
+  getTasks(): Promise<any> {
+    return this.taskService.findAll();
+  }
+  
   @Get('/:id')
   getTask(@Param('id') id: string) {
     return this.taskService.getTask(id);
