@@ -48,12 +48,14 @@ export const useTodoStore = defineStore("todo", {
       }
       
     },
-    clearAll() {
+    async clearAll() {
      const todo =this.todos.filter((t)=> t.completedAt == null );
      for(const todo of this.todos){
       try{
-        axios.delete(`http://localhost:3100/tasks/delete/${todo.id}`);
-        console.log("Deleted:", todo.id);
+        if(todo.completedAt != null){
+         await axios.delete(`http://localhost:3100/tasks/delete/${todo.id}`);
+          console.log("Deleted:", todo.id);
+       }
       }catch{
         console.log(error)
       }
