@@ -6,6 +6,7 @@ import {
   Body,
   Patch,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { createUserDto } from './dto/create-user.dto';
@@ -18,8 +19,8 @@ export class UsersController {
     return this.userService.findAll();
   }
   @Get('/:id')
-  getUserById(@Param('id') id: string): Promise<any> {
-    return this.userService.findOne(parseInt(id));
+  getUserById(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.findOne(id);
   }
   // @Get('/:username')
   // getUser(@Param('username') username: string) {

@@ -20,8 +20,8 @@ export class TasksController {
   }
   
   @Get('/:id')
-  getTask(@Param('id') id: string) {
-    return this.taskService.getTask(id);
+  getTask(@Param('id') id: number) {
+    return this.taskService.findOne(id);
   }
   @Post('/')
   createTask(@Body() body: any) {
@@ -29,16 +29,16 @@ export class TasksController {
   }
 
   @Patch('/:id/done')
-  markTaskAsDone(@Body() body: any, @Param('id') id: string) {
+  markTaskAsDone(@Body() body: any, @Param('id') id: number) {
     return this.taskService.updateTask(id, body);
-  }
+  } 
 
   @Patch('/:id/pending')
-  markTaskAsPending(@Body() body: any, @Param('id') id: string) {
+  markTaskAsPending(@Body() body: any, @Param('id') id: number) {
     return this.taskService.updateTask(id, body);
   }
 
-  @Delete('/:id')
+  @Delete('/delete/:id')
   deleteTask(@Param('id') id: string) {
     return this.taskService.deleteTask(id);
   }

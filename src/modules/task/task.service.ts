@@ -17,38 +17,15 @@ export class TaskService {
   findOne(id: number) {
     return  this.tasksRepo.findOne({ where: { id } });
   }
-  getTask(id: string) {
-    console.log(id);
-    return {
-      name: 'Task 1',
-      description: 'Description of Task 1',
-      createdAt: new Date().toISOString(),
-      completedAt: null,
-      userId: 1,
-    };
-  }
   createTask(body: any) {
-    console.log(body);
-    return {
-      name: 'Task 1',
-      description: 'Description of Task 1',
-      createdAt: new Date().toISOString(),
-      completedAt: null,
-      userId: 1,
-    };
+    const task = this.tasksRepo.create(body);
+    return this.tasksRepo.save(task);
   }
-  updateTask(id: string, body: any) {
-    console.log(body);
-    return {
-      name: 'Task 1',
-      description: 'Description of Task 1',
-      createdAt: new Date().toISOString(),
-      completedAt: null,
-      userId: 1,
-    };
+  async updateTask(id: number, body: any) {
+    await this.tasksRepo.update(id, body);
+    return this.findOne(id);
   }
   deleteTask(id: string) {
-    console.log(id);
-    return { message: 'success' };
+    return this.tasksRepo.delete(id);
   }
 }
