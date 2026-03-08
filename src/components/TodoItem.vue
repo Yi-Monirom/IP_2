@@ -16,6 +16,7 @@ export default {
   methods: {
     toggleStatus(todoId) {
       this.todoStore.toggleStatus(todoId);
+      
     },
   },
 };

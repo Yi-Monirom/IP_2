@@ -11,7 +11,9 @@
         >You have <span class="pending-num"> {{ nbOfTodo }} </span> tasks
         pending.</span
       >
-      <button class="clear-button">Clear All</button>
+      <button type="button" @click="clearAllTodos" >Clear All</button>
+
+
     </div>
   </div>
 </template>
@@ -46,6 +48,7 @@ export default {
   methods: {
     handleAddTodo(todo) {
       this.store.addTodo(todo);
+
     },
     clearAllTodos() {
       console.log("clear");
