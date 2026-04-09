@@ -11,11 +11,10 @@ import { logInterceptor } from 'src/common/interceptor/loging.interceptor';
 @Controller('reciepts')
 export class RecieptController {
     constructor(private readonly recService: ReceiptsService) { }
-
+    // @UseGuards()
     @Get('/')
     findAll() {
         return this.recService.findAll();
-
     }
 
     @Post('/')

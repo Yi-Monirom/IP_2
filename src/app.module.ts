@@ -4,15 +4,19 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { RecieptModule } from './reciept/reciept.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { NotificationModule } from './notification/notification.module';
+import { OrdersModule } from './orders/orders.module';
+import { CoreModule } from './core/core.module';
 
-console.log({
-  user: process.env.DB_USER,
-  pass: process.env.DB_PASSWORD,
-});
-console.log('ENV:', process.env.DB_NAME);
+// console.log({
+//   user: process.env.DB_USER,
+//   pass: process.env.DB_PASSWORD,
+// });
+// console.log('ENV:', process.env.DB_NAME);
 @Module({
 
   imports: [
+    
     ConfigModule.forRoot(
       { isGlobal: true }
     ),
@@ -31,7 +35,13 @@ console.log('ENV:', process.env.DB_NAME);
 
     ),
 
-    RecieptModule
+    RecieptModule,
+
+    NotificationModule,
+
+    OrdersModule,
+
+    CoreModule
   ],
   controllers: [AppController],
   providers: [AppService],
