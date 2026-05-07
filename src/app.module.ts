@@ -7,22 +7,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { NotificationModule } from './notification/notification.module';
 import { OrdersModule } from './orders/orders.module';
 import { CoreModule } from './core/core.module';
+import { CategoriesModule } from './category/category.module';
+import { ProductsModule } from './product/product.module';
 
-// console.log({
-//   user: process.env.DB_USER,
-//   pass: process.env.DB_PASSWORD,
-// });
-// console.log('ENV:', process.env.DB_NAME);
 @Module({
-
   imports: [
-    
     ConfigModule.forRoot(
       { isGlobal: true }
     ),
     TypeOrmModule.forRoot(
       {
-
         type: 'postgres',
         host: process.env.DB_HOST,
         port: Number(process.env.DB_PORT),
@@ -32,16 +26,13 @@ import { CoreModule } from './core/core.module';
         autoLoadEntities: true,
         synchronize: true
       }
-
     ),
-
     RecieptModule,
-
     NotificationModule,
-
     OrdersModule,
-
-    CoreModule
+    CoreModule,
+    CategoriesModule,
+    ProductsModule
   ],
   controllers: [AppController],
   providers: [AppService],

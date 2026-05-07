@@ -8,7 +8,7 @@ import { NotificationService } from 'src/notification/notification.service';
 export class OrdersService {
     constructor(
         @Inject('ORDER_SERVICE') private client: ClientProxy,
-        @Inject(forwardRef(() => NotificationService)) private readonly notifications: NotificationService,
+        @Inject(NotificationService) private readonly notifications: NotificationService,
        
     ){}
     creatOrder(orderDto:any){

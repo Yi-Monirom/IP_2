@@ -1,8 +1,8 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { EVENT_PUBLISHER } from 'src/core/token';
-import { OrdersService } from 'src/orders/orders.service';
 
-type EventPublisher = { publish: (event: string, payload: any) => void };
+
+type EventPublisher = { notify: (event: string, payload: any) => void };
 
 @Injectable()
 export class NotificationService {
@@ -11,7 +11,7 @@ export class NotificationService {
     private readonly  publisher : EventPublisher,
   ) {}
     notify(event: string,payload: any){
-        console.log(`[NOTIFY] ${event}`,payload);
+        this.publisher.notify(event,payload)
         return {ok:true};
     }
 }

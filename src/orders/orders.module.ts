@@ -14,7 +14,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
                 port: 8877,
             },
         },
-    ]),forwardRef(()=> NotificationModule)],
+    ]),NotificationModule],
     controllers: [OrdersController],
     providers: [OrdersService],
     exports: [OrdersService]

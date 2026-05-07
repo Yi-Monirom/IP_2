@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Receipt } from 'src/database/entities/receipts.entity';
@@ -10,6 +10,7 @@ import { NotificationService } from 'src/notification/notification.service';
 export class ReceiptsService {
   constructor(
     @InjectRepository(Receipt)
+    @Inject()
     private readonly receiptRepo: Repository<Receipt>,
     private readonly notifications: NotificationService,
   ) {}
