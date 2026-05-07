@@ -21,6 +21,10 @@ export class CategoriesService {
     return this.categoryRepository.find();
   }
 
+  findOne(id: number) {
+    return this.categoryRepository.findOne({ where: { id } });
+  }
+
   async update(id: number, updateCategoryDto: UpdateCategoryDto) {
     const category = await this.categoryRepository.findOne({ where: { id } });
     if (!category) {

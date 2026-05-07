@@ -9,9 +9,20 @@ import { OrdersModule } from './orders/orders.module';
 import { CoreModule } from './core/core.module';
 import { CategoriesModule } from './category/category.module';
 import { ProductsModule } from './product/product.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
 
 @Module({
   imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+
+      typePaths: [join(process.cwd(), 'src/graphql/schema/*.graphql')],
+      // autoSchemaFile: join(process.cwd(), 'src/graphql/schema.gql'),
+
+      playground: true
+    }),
     ConfigModule.forRoot(
       { isGlobal: true }
     ),
