@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Category {
+  id: Int!
+  name: String!
+  productCount: Int!
+  color: String!
+  image: String!
+  group: String!
+}
+
+type Product {
+  id: Int!
+  name: String!
+  rating: Float!
+  size: String!
+  image: String!
+  price: Float!
+  promotionAsPercentage: Int!
+  categoryId: Int!
+  instock: Int!
+  countSold: Int!
+  group: String!
+  category: Category
+}
+
+type Query {
+  categories: [Category!]!
+  products: [Product!]!
+  product(id: Int!): Product
+}
+
+type Mutation {
+  createCategory(name: String!): Category!
+  createProduct(name: String!, price: Float!, categoryId: Int!): Product!
+}

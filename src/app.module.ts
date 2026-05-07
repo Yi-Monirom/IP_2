@@ -18,8 +18,8 @@ import { join } from 'path';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
 
-      typePaths: [join(process.cwd(), 'src/graphql/schema/*.graphql')],
-      // autoSchemaFile: join(process.cwd(), 'src/graphql/schema.gql'),
+      // typePaths: [join(process.cwd(), 'src/graphql/schema/*.graphql')],
+      autoSchemaFile: join(process.cwd(), 'src/graphql/schema.gql'),
 
       playground: true
     }),

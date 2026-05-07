@@ -1,16 +1,22 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { ObjectType, Field, Float } from '@nestjs/graphql';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+@ObjectType()
 @Entity('receipts')
-export class Receipt{
-    @PrimaryGeneratedColumn()
-    receiptId!: string;
+export class Receipt {
+  @Field()
+  @PrimaryGeneratedColumn()
+  receiptId!: string;
 
-    @Column({type:'timestamp'})
-    useDate!: Date;
+  @Field()
+  @Column({ type: 'timestamp' })
+  useDate!: Date;
 
-    @Column('decimal',{precision:10 ,scale:2})
-    price!:number;
+  @Field(() => Float)
+  @Column('decimal', { precision: 10, scale: 2 })
+  price!: number;
 
-    @Column()
-    name!:string;
+  @Field()
+  @Column()
+  name!: string;
 }
